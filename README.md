@@ -12,3 +12,6 @@ A clone of my favorite command line utility that works well with [Oh My Zsh](htt
 1. Create a `.ok` file in any directory you choose.  Fill it with any commands you use often or just want to remember.  See the included `.ok` file in this repo for some ideas.
 2. Run the `ok` function in that directory to get a list of your saved commands
 3. Run `ok #` to invoke any of those commands
+
+# Demo
+![Demo usage](./demo.svg)
