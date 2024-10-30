@@ -1,4 +1,4 @@
 open https://secretgeek.net/ok #view the original post
-open https://github.com/zpalffy/ok #look at this git repo
+open https://workflowy.com/invite/377bf40d.lnx #best free productivity tool, ever
 echo "Hello, the current time is $(date "+%H:%M:%S")"
 http-server --cors --port 9021 #start a dev server with CORS enabled
