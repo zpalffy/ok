@@ -1,0 +1,4 @@
+open https://secretgeek.net/ok #view the original post
+open https://github.com/zpalffy/ok #look at this git repo
+echo "Hi $USER, the time when pressed enter was $(date "+%H:%M:%S")"
+http-server --cors --port 9021 #start a dev server with CORS enabled

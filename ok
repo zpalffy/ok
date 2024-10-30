@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# all credits -> https://github.com/secretGeek/ok-bash
+# just changed the sed on line 19 to work with zsh
+# tip: "." (i.e. source) this file from your profile (.bashrc), e.g. ". ~/ok"
+
+ok() {
+  # used for colored output
+  local NUMBER=$'\033[0;36m' #cyan
+  local COMMENT=$'\033[0;33m' #yellow
+  local NC=$'\033[0m' # No Color
+
+  # if there is a file called .ok...
+  if [ -f .ok ]; then
+    re='^[0-9]+$'
+    # if the user provided a parameter, $1, which contains a number...
+    if [[ $1 =~ $re ]]; then
+      # output the command first
+      cat .ok | echo -e "${NUMBER}$ ${NC}$(sed -n "$1p" .ok)" | sed -E "s/(#.*)\$/${COMMENT}\1${NC}/1"
+      # save and remove argument. Remaining arguments are passwed to eval automatically
+      LINE_NR=$1
+      shift
+      # execute that line from the file
+      eval $(cat .ok | sed ${LINE_NR}'!d')
+    else
+      # list the content of the file, with a number (1-based) before each line
+      cat .ok | awk -v z=$NUMBER -v n=$NC '{print z "" ++i "." n " " $0 }' | sed -E "s/(#.*)\$/${COMMENT}\1${NC}/1"
+    fi
+  fi
+}
