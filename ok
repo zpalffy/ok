@@ -8,6 +8,7 @@ ok() {
   local NUMBER=$'\033[0;36m' #cyan
   local COMMENT=$'\033[0;33m' #yellow
   local NC=$'\033[0m' # No Color
+  local PROMPT='$' # Just used for display on output
 
   # if there is a file called .ok...
   if [ -f .ok ]; then
@@ -15,7 +16,7 @@ ok() {
     # if the user provided a parameter, $1, which contains a number...
     if [[ $1 =~ $re ]]; then
       # output the command first
-      cat .ok | echo -e "${NUMBER}$ ${NC}$(sed -n "$1p" .ok)" | sed -E "s/(#.*)\$/${COMMENT}\1${NC}/1"
+      cat .ok | echo -e "${NUMBER}${PROMPT} ${NC}$(sed -n "$1p" .ok)" | sed -E "s/(#.*)\$/${COMMENT}\1${NC}/1"
       # save and remove argument. Remaining arguments are passwed to eval automatically
       LINE_NR=$1
       shift
