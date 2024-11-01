@@ -4,7 +4,7 @@
 # tip: "." (i.e. source) this file from your profile (.bashrc), e.g. ". ~/ok"
 
 ok() {
-  # used for colored output
+  # used for colored output.  Feel free to customize here:
   local NUMBER=$'\033[0;36m' #cyan
   local COMMENT=$'\033[0;33m' #yellow
   local NC=$'\033[0m' # No Color
